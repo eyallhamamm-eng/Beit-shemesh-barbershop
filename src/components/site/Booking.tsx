@@ -7,6 +7,12 @@ import { WhatsAppIcon } from "./BrandIcons";
 import { Reveal, SectionHeading } from "./primitives";
 import Social from "./Social";
 
+/** Local date as yyyy-mm-dd, for the date picker's minimum. */
+const todayISO = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+
 const fieldClass =
   "mt-2 block min-h-12 w-full rounded-xl border border-bone/20 bg-ink px-4 py-3 text-base text-bone placeholder:text-stone/80 transition-colors hover:border-bone/40 focus:border-brass focus-visible:outline-offset-2";
 
@@ -18,30 +24,44 @@ const Booking = () => {
     name: `${uid}-name`,
     nameError: `${uid}-name-error`,
     service: `${uid}-service`,
-    day: `${uid}-day`,
+    date: `${uid}-date`,
+    dateError: `${uid}-date-error`,
+    time: `${uid}-time`,
     notes: `${uid}-notes`,
     privacy: `${uid}-privacy`,
   };
   const nameRef = useRef<HTMLInputElement>(null);
+  const dateRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState(false);
+  const [dateError, setDateError] = useState<"" | "required" | "saturday">("");
   const [sentHref, setSentHref] = useState<string | null>(null);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const name = String(data.get("name") ?? "").trim();
+    const date = String(data.get("date") ?? "");
+    const time = String(data.get("time") ?? "");
+    const day = date ? new Date(`${date}T12:00:00`).getDay() : -1;
+    const dErr = !date ? "required" : day === 6 ? "saturday" : "";
+    setError(!name);
+    setDateError(dErr);
     if (!name) {
-      setError(true);
       nameRef.current?.focus();
       return;
     }
-    setError(false);
+    if (dErr) {
+      dateRef.current?.focus();
+      return;
+    }
+    const [y, m, d] = date.split("-");
+    const when = `${t.visit.days[day]} ${d}/${m}/${y}${time ? `, ${time}` : ""}`;
     const notes = String(data.get("notes") ?? "").trim();
     const lines = [
       b.messageIntro,
       `${b.messageName}: ${name}`,
       `${b.messageService}: ${data.get("service")}`,
-      `${b.messageWhen}: ${data.get("day")}`,
+      `${b.messageWhen}: ${when}`,
       notes && `${b.messageNotes}: ${notes}`,
     ].filter(Boolean);
     const href = whatsappHref(lines.join("\n"));
@@ -125,7 +145,7 @@ const Booking = () => {
                 )}
               </div>
 
-              <div>
+              <div className="sm:col-span-2">
                 <label htmlFor={ids.service} className="text-[0.95rem] font-semibold">
                   {b.service}
                 </label>
@@ -139,16 +159,42 @@ const Booking = () => {
               </div>
 
               <div>
-                <label htmlFor={ids.day} className="text-[0.95rem] font-semibold">
-                  {b.day}
+                <label htmlFor={ids.date} className="text-[0.95rem] font-semibold">
+                  {b.date} <span className="font-normal text-stone">{b.requiredMark}</span>
                 </label>
-                <select id={ids.day} name="day" className={fieldClass}>
-                  {b.dayOptions.map((d) => (
-                    <option key={d} value={d}>
-                      {d}
-                    </option>
-                  ))}
-                </select>
+                <input
+                  ref={dateRef}
+                  id={ids.date}
+                  name="date"
+                  type="date"
+                  required
+                  aria-required="true"
+                  min={todayISO()}
+                  aria-invalid={dateError ? true : undefined}
+                  aria-describedby={dateError ? ids.dateError : undefined}
+                  onChange={() => dateError && setDateError("")}
+                  className={cn(fieldClass, "[color-scheme:dark]", dateError && "border-red-400")}
+                />
+                {dateError && (
+                  <p id={ids.dateError} role="alert" className="mt-2 text-sm font-medium text-red-300">
+                    {dateError === "saturday" ? b.saturdayError : b.dateError}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor={ids.time} className="text-[0.95rem] font-semibold">
+                  {b.time}
+                </label>
+                <input
+                  id={ids.time}
+                  name="time"
+                  type="time"
+                  min="08:00"
+                  max="21:00"
+                  step={900}
+                  className={cn(fieldClass, "[color-scheme:dark]")}
+                />
               </div>
 
               <div className="sm:col-span-2">

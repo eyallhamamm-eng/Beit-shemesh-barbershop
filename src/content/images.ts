@@ -1,8 +1,10 @@
 /*
- * Photo slots. Drop real photos into /public/images and set `src` (e.g. "/images/hero.jpg").
- * Set `width`/`height` to the photo's real pixel size — the layout keeps each photo's
- * natural aspect ratio (nothing is cropped). Until `src` is set, a placeholder is shown.
+ * Site photos (in /public/images). `width`/`height` are the files' real pixel sizes —
+ * the layout keeps each photo's natural aspect ratio, so nothing is cropped.
+ * A slot with `src: null` shows a placeholder instead.
  */
+
+const BASE = import.meta.env.BASE_URL;
 
 export type SiteImage = {
   src: string | null;
@@ -12,72 +14,31 @@ export type SiteImage = {
 };
 
 export const HERO_IMAGE: SiteImage = {
-  src: null,
-  width: 1000,
-  height: 1300,
+  src: `${BASE}images/hero-fringe-fade.jpg`,
+  width: 1100,
+  height: 1394,
   alt: {
-    he: "איציק מעצב תספורת גברים על כיסא הספרות במספרה בהרצל 3, בית שמש",
-    en: "Itzik styling a men's haircut in the barber chair at 3 Herzl St, Beit Shemesh",
+    he: "תספורת עם פוני ופייד נמוך, על הכיסא במספרה של איציק",
+    en: "Textured fringe with a low fade, in the chair at Itzik's barbershop",
   },
 };
 
-export const BARBER_IMAGE: SiteImage = {
-  src: null,
-  width: 900,
-  height: 1100,
-  alt: {
-    he: "דיוקן של איציק, הספר של מספרות גברים בית שמש, עומד ליד עמדת העבודה שלו",
-    en: "Portrait of Itzik, the barber at Beit Shemesh Men's Barbershop, standing by his station",
-  },
-};
+const img = (name: string, width: number, height: number, he: string, en: string): SiteImage => ({
+  src: `${BASE}images/${name}.jpg`,
+  width,
+  height,
+  alt: { he, en },
+});
 
 export const GALLERY: SiteImage[] = [
-  {
-    src: null,
-    width: 800,
-    height: 1000,
-    alt: { he: "תספורת פייד קצרה עם מעבר חלק בצדדים, מבט מהצד", en: "Short fade haircut with a smooth side blend, side view" },
-  },
-  {
-    src: null,
-    width: 800,
-    height: 800,
-    alt: { he: "זקן מעוצב עם קווי לחיים וצוואר חדים", en: "Shaped beard with crisp cheek and neck lines" },
-  },
-  {
-    src: null,
-    width: 1200,
-    height: 800,
-    alt: { he: "עמדת הספרות במספרה: כיסא עור, מראה ומכונות תספורת", en: "The barber station: leather chair, mirror and clippers" },
-  },
-  {
-    src: null,
-    width: 800,
-    height: 1100,
-    alt: { he: "תספורת קלאסית מסורקת לצד, מבט מקדימה", en: "Classic side-parted haircut, front view" },
-  },
-  {
-    src: null,
-    width: 800,
-    height: 800,
-    alt: { he: "גימור בתער לאורך קו העורף", en: "Straight-razor finish along the neckline" },
-  },
-  {
-    src: null,
-    width: 800,
-    height: 1000,
-    alt: { he: "תספורת ילדים מסודרת עם דירוג רך", en: "Neat kids' haircut with a soft taper" },
-  },
-  {
-    src: null,
-    width: 1200,
-    height: 850,
-    alt: { he: "חזית המספרה ברחוב הרצל 3 במרכז בית שמש", en: "The shopfront at 3 Herzl St in central Beit Shemesh" },
-  },
-  {
-    src: null,
-    width: 800,
-    height: 1050,
-    alt: { he: "טקסטורה קצרה מעוצבת בחלק העליון עם פייד גבוה", en: "Short textured top with a high fade" },
-  },
+  img("fade-beard-line", 900, 1182, "פייד גבוה עם זקן מעוצב וקו חד בלחי", "High fade with a shaped beard and a sharp cheek line"),
+  img("curls-highlights", 900, 1158, "תלתלים עם גוונים, טייפר וזקן קצר", "Curls with highlights, a taper and a short beard"),
+  img("fade-back", 900, 1671, "פייד קצר, מבט מאחור", "Short fade, seen from the back"),
+  img("taper-beard", 900, 1151, "טייפר נמוך עם זקן מסודר", "Low taper with a neat beard"),
+  img("premium-fade-beard", 900, 978, "פייד קצר עם זקן מלא ומעוצב", "Short fade with a full, shaped beard"),
+  img("fringe-high-fade", 900, 1159, "פוני ארוך עם פייד גבוה", "Long fringe with a high fade"),
+  img("curly-fade", 900, 1308, "שיער מתולתל למעלה עם פייד בצדדים", "Curly top with a fade on the sides"),
+  img("crop-high-fade", 900, 1166, "תספורת קצרה עם פייד גבוה וזקן קצר", "Short crop with a high fade and a short beard"),
+  img("taper-beard-side", 900, 1188, "תספורת קצרה עם טייפר וזקן, מבט מהצד", "Short cut with a taper and beard, side view"),
+  img("taper-back-mirror", 900, 1166, "טייפר מאחור, מול המראה במספרה", "Taper from the back, in front of the shop mirror"),
 ];

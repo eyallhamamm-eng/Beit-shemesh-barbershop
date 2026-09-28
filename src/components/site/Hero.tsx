@@ -119,7 +119,7 @@ const Hero = () => {
         </div>
 
         {/* Visual: arched photo frame with layered depth. */}
-        <div className="relative mx-auto w-full max-w-[26rem] lg:col-span-5 lg:max-w-none">
+        <div className="relative mx-auto w-full max-w-[26rem] lg:col-span-5 lg:max-w-[24rem]">
           <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rtl:-translate-x-4">
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.94 }}

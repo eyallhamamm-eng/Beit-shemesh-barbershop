@@ -115,7 +115,6 @@ const Booking = () => {
                   aria-required="true"
                   aria-invalid={error || undefined}
                   aria-describedby={error ? ids.nameError : undefined}
-                  placeholder={b.namePlaceholder}
                   onChange={() => error && setError(false)}
                   className={cn(fieldClass, error && "border-red-400")}
                 />
@@ -160,7 +159,6 @@ const Booking = () => {
                   id={ids.notes}
                   name="notes"
                   rows={3}
-                  placeholder={b.notesPlaceholder}
                   className={cn(fieldClass, "resize-y")}
                 />
               </div>

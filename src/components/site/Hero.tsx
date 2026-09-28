@@ -1,74 +1,75 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { useRef } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import { BUSINESS, directionsHref, telHref, whatsappHref } from "@/lib/business";
 import { HERO_IMAGE } from "@/content/images";
 import { WhatsAppIcon } from "./BrandIcons";
-import { EASE_OUT, ImageSlot, OpenStatus, Stars, useMotionReduced } from "./primitives";
+import { EASE_OUT, OpenStatus, Stars, useMotionReduced } from "./primitives";
 
+/** Full-bleed shop photo with the headline and actions set over a dark gradient. */
 const Hero = () => {
   const { t, lang } = useLang();
   const reduce = useMotionReduced();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yImage = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 90]);
-    const yNumeral = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
+  const yImage = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "12%"]);
 
   const item = (i: number) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 32, filter: "blur(6px)" },
-          animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-          transition: { duration: 0.9, ease: EASE_OUT, delay: 0.15 + i * 0.09 },
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.8, ease: EASE_OUT, delay: 0.2 + i * 0.08 },
         };
 
   return (
     <section
       ref={ref}
       aria-labelledby="hero-title"
-      className="theme-dark grain relative isolate overflow-hidden pb-20 pt-[calc(var(--header-h)+2.5rem)] lg:min-h-[100svh] lg:pb-28 lg:pt-[calc(var(--header-h)+4rem)]"
+      className="theme-dark relative isolate flex min-h-[88svh] items-end overflow-hidden pb-14 pt-[calc(var(--header-h)+3rem)] sm:pb-20"
     >
-      {/* Atmosphere: warm lamp glow + a giant "3" for Herzl 3. */}
+      {/* Background photo (decorative framing of the same cut shown in the gallery). */}
+      <motion.div style={{ y: yImage }} className="absolute inset-0 -z-20">
+        {HERO_IMAGE.src && (
+          <img
+            src={HERO_IMAGE.src}
+            alt={HERO_IMAGE.alt[lang]}
+            width={HERO_IMAGE.width}
+            height={HERO_IMAGE.height}
+            className="h-[115%] w-full object-cover object-[center_42%]"
+          />
+        )}
+      </motion.div>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 end-[-10%] -z-10 h-[46rem] w-[46rem] rounded-full bg-[radial-gradient(closest-side,hsl(var(--brass)/0.22),transparent)]"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/75 to-ink/30"
       />
-      <motion.span
+      <div
         aria-hidden="true"
-        style={{ y: yNumeral }}
-        className="pointer-events-none absolute -bottom-24 start-[-4%] -z-10 select-none font-display text-[26rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_hsl(var(--brass)/0.18)] sm:text-[34rem]"
-      >
-        3
-      </motion.span>
+        className="absolute inset-0 -z-10 bg-gradient-to-l from-ink/70 via-transparent to-transparent ltr:bg-gradient-to-r"
+      />
 
-      <div className="container-editorial grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-7">
-
+      <div className="container-editorial">
+        <div className="max-w-2xl">
           <h1 id="hero-title" className="font-display">
-            <motion.span {...item(1)} className="block text-lg font-medium tracking-wide text-stone sm:text-xl">
+            <motion.span {...item(0)} className="block text-base font-medium text-stone sm:text-lg">
               {t.hero.titleLead}
             </motion.span>
             <motion.span
-              {...item(2)}
-              className="mt-3 block text-[clamp(3.1rem,9vw,7.25rem)] font-bold leading-[0.95] tracking-tight"
+              {...item(1)}
+              className="mt-3 block text-[clamp(2.9rem,8vw,6rem)] font-bold leading-[1] tracking-tight"
             >
-              {t.hero.titleLine1}
-            </motion.span>
-            <motion.span
-              {...item(3)}
-              className="block text-[clamp(3.1rem,9vw,7.25rem)] font-bold italic leading-[1.02] tracking-tight text-brass"
-            >
-              {t.hero.titleLine2}
+              {t.hero.titleLine1} <span className="text-stone">{t.hero.titleLine2}</span>
             </motion.span>
           </h1>
 
-          <motion.p {...item(4)} className="mt-8 max-w-xl text-lg leading-relaxed text-stone sm:text-xl">
+          <motion.p {...item(2)} className="mt-6 max-w-lg text-lg leading-relaxed text-bone/85">
             {t.hero.lead}
           </motion.p>
 
-          <motion.div {...item(5)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <motion.div {...item(3)} className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={whatsappHref(t.booking.defaultMessage)}
               target="_blank"
@@ -89,12 +90,12 @@ const Hero = () => {
           </motion.div>
 
           <motion.ul
-            {...item(6)}
-            className="mt-10 flex flex-col gap-4 border-t border-bone/10 pt-6 text-[0.95rem] text-bone/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8"
+            {...item(4)}
+            className="mt-8 flex flex-col gap-3 text-[0.95rem] text-bone/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-7"
           >
-            <li className="flex items-center gap-2.5">
-              <span className="font-display text-2xl font-bold text-bone">{BUSINESS.googleRating}</span>
-              <Stars className="text-brass" />
+            <li className="flex items-center gap-2">
+              <span className="font-display text-xl font-bold text-bone">{BUSINESS.googleRating}</span>
+              <Stars className="text-bone" />
               <span className="sr-only">{t.common.ratingAria}</span>
               <span aria-hidden="true" className="text-stone">
                 {t.common.googleRating}
@@ -111,62 +112,13 @@ const Hero = () => {
                 aria-label={`${t.visit.addressAria} ${t.common.opensNewTab}`}
                 className="link-underline inline-flex items-center gap-2"
               >
-                <MapPin aria-hidden="true" className="h-4 w-4 text-brass" />
+                <MapPin aria-hidden="true" className="h-4 w-4" />
                 {BUSINESS.address[lang]}
               </a>
             </li>
           </motion.ul>
         </div>
-
-        {/* Visual: arched photo frame with layered depth. */}
-        <div className="relative mx-auto w-full max-w-[26rem] lg:col-span-5 lg:max-w-[24rem]">
-          <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rtl:-translate-x-4">
-            <motion.div
-              initial={reduce ? false : { opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: EASE_OUT, delay: 0.3 }}
-              className="h-full w-full rounded-t-full border border-brass/40"
-            />
-          </div>
-          <motion.div
-            style={{ y: yImage }}
-            initial={reduce ? false : { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0 round 999px 999px 0 0)" }}
-            animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0 round 999px 999px 0 0)" }}
-            transition={{ duration: 1.3, ease: EASE_OUT, delay: 0.25 }}
-            className="relative overflow-hidden rounded-t-full shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)] ring-1 ring-bone/10"
-          >
-            <ImageSlot
-              src={HERO_IMAGE.src}
-              alt={HERO_IMAGE.alt[lang]}
-              width={HERO_IMAGE.width}
-              height={HERO_IMAGE.height}
-              eager
-            />
-          </motion.div>
-
-          {/* Barber-pole column. */}
-          <motion.div
-            aria-hidden="true"
-            initial={reduce ? false : { opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 1, ease: EASE_OUT, delay: 0.7 }}
-            className="absolute -end-3 top-[18%] h-44 w-4 origin-top overflow-hidden rounded-full ring-1 ring-brass/60 sm:-end-5 sm:w-5"
-          >
-            <span className="barber-stripes absolute inset-0" />
-          </motion.div>
-        </div>
       </div>
-
-      <motion.a
-        href="#gallery"
-        initial={reduce ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-6 start-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-stone hover:text-bone rtl:translate-x-1/2 lg:flex"
-      >
-        {t.hero.scroll}
-        <ArrowDown aria-hidden="true" className="h-4 w-4 motion-safe:animate-bounce" />
-      </motion.a>
     </section>
   );
 };

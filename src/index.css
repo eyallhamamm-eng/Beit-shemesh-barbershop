@@ -3,25 +3,24 @@
 @tailwind utilities;
 
 /*
- * Palette — "espresso & brass". Every text pairing below was checked for WCAG AA:
- *   bone on ink ........ 15.6:1     brass on ink ....... 6.7:1
- *   stone on ink ....... 8.2:1      ink on bone ........ 15.6:1
- *   brass-deep on bone . 5.5:1      umber on bone ...... 6.2:1
- *   ink on brass ....... 6.7:1
+ * Palette: cool charcoal & white, one red accent (barber pole only). AA-checked:
+ *   bone on ink ........ 13.9:1     stone on ink ....... 7.4:1
+ *   ink on bone ........ 13.9:1     umber on bone ...... 7.1:1
  */
 @layer base {
   :root {
-    --ink: 30 17% 7%; /* #15120F */
-    --ink-soft: 30 12% 11%; /* #201c19 */
-    --ink-line: 32 12% 20%;
-    --bone: 38 36% 92%; /* #F2ECE2 */
-    --paper: 40 45% 96%; /* #FAF6EF */
-    --brass: 34 47% 55%; /* #C29255 */
-    --brass-light: 35 62% 68%;
-    --brass-deep: 31 55% 32%; /* #7F5425 */
-    --stone: 35 14% 66%; /* #B5AA9A */
-    --umber: 33 12% 33%; /* #5E554A */
-    --oxblood: 0 60% 30%; /* #7A1F1F */
+    --ink: 220 6% 15%; /* #23252a */
+    --ink-soft: 220 5% 20%; /* #303237 */
+    --ink-line: 220 5% 29%;
+    --bone: 220 12% 95%; /* #f0f1f4 */
+    --paper: 0 0% 100%;
+    /* "brass" is the accent slot: white on dark, charcoal on light. */
+    --brass: 0 0% 100%;
+    --brass-light: 0 0% 100%;
+    --brass-deep: 220 6% 15%;
+    --stone: 220 6% 70%; /* #aeb1b8 */
+    --umber: 220 5% 34%; /* #53565c */
+    --oxblood: 0 62% 42%; /* barber-pole red */
 
     --background: var(--ink);
     --foreground: var(--bone);
@@ -161,10 +160,10 @@
     color: hsl(var(--ink));
     box-shadow:
       0 1px 0 hsl(0 0% 100% / 0.25) inset,
-      0 10px 30px -12px hsl(var(--brass) / 0.7);
+      0 10px 30px -14px rgb(0 0 0 / 0.6);
   }
   .btn-brass:hover {
-    background: hsl(var(--brass-light));
+    background: hsl(var(--bone));
   }
   .btn-ghost-dark {
     @apply btn;

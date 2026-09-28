@@ -59,8 +59,6 @@ const he = {
       { name: "תספורת + זקן", text: "תספורת וסידור זקן באותו תור." },
       { name: "חידוד זקן", text: "יישור קווים וגימור בלחיים ובצוואר." },
     ],
-    note: "לא בטוח איזו תספורת?",
-    noteCta: "אפשר לשלוח תמונה בוואטסאפ",
   },
   gallery: {
     title: "עבודות",
@@ -292,8 +290,6 @@ const en: Dict = {
       { name: "Haircut + beard", text: "A haircut and beard trim in the same appointment." },
       { name: "Beard line-up", text: "Sharp lines and a clean finish on the cheeks and neck." },
     ],
-    note: "Not sure which cut?",
-    noteCta: "You can send a photo on WhatsApp",
   },
   gallery: {
     title: "Work",

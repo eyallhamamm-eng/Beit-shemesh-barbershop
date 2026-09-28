@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Scissors } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
-import { whatsappHref } from "@/lib/business";
-import { WhatsAppIcon } from "./BrandIcons";
 import { Reveal, staggerChild, staggerParent, useMotionReduced } from "./primitives";
 
 /** Heading row, a full-width rule, then a grid of service cells separated by hairlines. */
@@ -42,22 +40,6 @@ const Services = () => {
             </motion.li>
           ))}
         </motion.ul>
-
-        <Reveal delay={0.1}>
-          <p className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-lg">
-            <span className="font-semibold">{t.services.note}</span>
-            <a
-              href={whatsappHref(t.booking.photoMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold text-brass-light"
-            >
-              <WhatsAppIcon className="h-5 w-5" />
-              <span className="link-underline">{t.services.noteCta}</span>
-              <span className="sr-only">{t.common.opensNewTab}</span>
-            </a>
-          </p>
-        </Reveal>
       </div>
     </section>
   );

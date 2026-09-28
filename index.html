@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Apply the saved language before first paint, so there's no RTL→LTR flash. -->
+    <script>
+      try {
+        var l = localStorage.getItem("site-lang");
+        if (l === "en") { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; }
+        var a = JSON.parse(localStorage.getItem("site-a11y") || "null");
+        if (a && a.scale && a.scale !== 100) document.documentElement.style.fontSize = a.scale + "%";
+      } catch (e) {}
+    </script>
+
+    <title>מספרות גברים בית שמש | איציק, הרצל 3</title>
+    <meta name="description" content="ספר גברים בהרצל 3, בית שמש. תספורת, פייד וזקן אצל איציק. 4.9 בגוגל. פתוח א׳–ה׳ עד 21:00. תור בוואטסאפ: 050-688-5166." />
+    <meta name="author" content="מספרות גברים בית שמש" />
+    <meta name="theme-color" content="#15120F" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- When the site gets its final domain, add: <link rel="canonical" href="https://YOUR-DOMAIN/" /> and make og:url / og:image absolute. -->
+
+    <!-- Open Graph (WhatsApp / Facebook previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="מספרות גברים בית שמש" />
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="מספרות גברים בית שמש | איציק, הרצל 3" />
+    <meta property="og:description" content="תספורת, פייד וזקן אצל איציק, הרצל 3. 4.9 בגוגל. תור בוואטסאפ: 050-688-5166." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="מספרות גברים בית שמש, הרצל 3. 4.9 בגוגל" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="מספרות גברים בית שמש | איציק, הרצל 3" />
+    <meta name="twitter:description" content="תספורת, פייד וזקן אצל איציק, הרצל 3. 4.9 בגוגל." />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local business structured data (schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "additionalType": "https://en.wikipedia.org/wiki/Barber",
+        "name": "מספרות גברים בית שמש",
+        "alternateName": "Beit Shemesh Men's Barbershop",
+        "description": "ספר גברים בבית שמש: תספורת, פייד, זקן וקווים בתער.",
+        "telephone": "+972-50-688-5166",
+        "priceRange": "₪₪",
+        "image": "/og-image.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "הרצל 3",
+          "addressLocality": "בית שמש",
+          "addressCountry": "IL"
+        },
+        "areaServed": { "@type": "City", "name": "בית שמש" },
+        "employee": { "@type": "Person", "name": "איציק", "jobTitle": "ספר גברים" },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:00",
+            "closes": "21:00"
+          },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "14:30" }
+        ],
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=%D7%94%D7%A8%D7%A6%D7%9C%203%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9",
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": "https://wa.me/972506885166",
+          "name": "קביעת תור בוואטסאפ"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <main style="font-family: system-ui, sans-serif; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.6">
+        <h1>מספרות גברים בית שמש</h1>
+        <p>ספר גברים בהרצל 3, בית שמש. תספורת, פייד וזקן אצל איציק. 4.9 בגוגל.</p>
+        <p>כתובת: <a href="https://www.google.com/maps/dir/?api=1&amp;destination=%D7%94%D7%A8%D7%A6%D7%9C%203%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9">הרצל 3, בית שמש</a></p>
+        <p>טלפון ו-WhatsApp: <a href="tel:+972506885166">050-688-5166</a></p>
+        <p>שעות: א׳–ה׳ 08:00–21:00 · ו׳ 08:00–14:30 · שבת סגור</p>
+      </main>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

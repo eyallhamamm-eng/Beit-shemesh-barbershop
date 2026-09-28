@@ -4,16 +4,16 @@
 
 /*
  * Palette — "espresso & brass". Every text pairing below was checked for WCAG AA:
- *   bone on ink ........ 15.6:1     brass on ink ....... 6.7:1
- *   stone on ink ....... 8.2:1      ink on bone ........ 15.6:1
+ *   bone on ink ........ 11.8:1     brass on ink ....... 5.0:1
+ *   stone on ink ....... 6.1:1      ink on bone ........ 11.8:1
  *   brass-deep on bone . 5.5:1      umber on bone ...... 6.2:1
  *   ink on brass ....... 6.7:1
  */
 @layer base {
   :root {
-    --ink: 30 17% 7%; /* #15120F */
-    --ink-soft: 30 12% 11%; /* #201c19 */
-    --ink-line: 32 12% 20%;
+    --ink: 30 9% 17%; /* #302c28 */
+    --ink-soft: 30 8% 22%; /* #3b3733 */
+    --ink-line: 30 7% 31%;
     --bone: 38 36% 92%; /* #F2ECE2 */
     --paper: 40 45% 96%; /* #FAF6EF */
     --brass: 34 47% 55%; /* #C29255 */

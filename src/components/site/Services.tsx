@@ -29,7 +29,7 @@ const Services = () => {
           initial={reduce ? false : "hidden"}
           whileInView="show"
           viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-          className="mt-12 grid gap-px border-y border-bone/15 bg-bone/15 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid gap-px border-y border-bone/15 bg-bone/15 md:grid-cols-3"
         >
           {t.services.items.map((s, i) => (
             <motion.li key={s.name} variants={staggerChild} className="bg-ink px-2 py-10 sm:px-8">

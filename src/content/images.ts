@@ -31,13 +31,13 @@ const img = (name: string, width: number, height: number, he: string, en: string
 });
 
 export const GALLERY: SiteImage[] = [
-  img("fade-beard-line", 900, 1182, "פייד גבוה עם זקן מעוצב וקו חד בלחי", "High fade with a shaped beard and a sharp cheek line"),
+  img("fade-beard-line", 900, 988, "פייד גבוה עם זקן מעוצב וקו חד בלחי", "High fade with a shaped beard and a sharp cheek line"),
   img("curls-highlights", 900, 1158, "תלתלים עם גוונים, טייפר וזקן קצר", "Curls with highlights, a taper and a short beard"),
   img("fade-back", 900, 1671, "פייד קצר, מבט מאחור", "Short fade, seen from the back"),
   img("taper-beard", 900, 1151, "טייפר נמוך עם זקן מסודר", "Low taper with a neat beard"),
   img("premium-fade-beard", 900, 978, "פייד קצר עם זקן מלא ומעוצב", "Short fade with a full, shaped beard"),
   img("fringe-high-fade", 900, 1159, "פוני ארוך עם פייד גבוה", "Long fringe with a high fade"),
-  img("curly-fade", 900, 1308, "שיער מתולתל למעלה עם פייד בצדדים", "Curly top with a fade on the sides"),
+  img("curly-fade", 900, 1142, "שיער מתולתל למעלה עם פייד בצדדים", "Curly top with a fade on the sides"),
   img("crop-high-fade", 900, 1166, "תספורת קצרה עם פייד גבוה וזקן קצר", "Short crop with a high fade and a short beard"),
   img("taper-beard-side", 900, 1188, "תספורת קצרה עם טייפר וזקן, מבט מהצד", "Short cut with a taper and beard, side view"),
   img("taper-back-mirror", 900, 1166, "טייפר מאחור, מול המראה במספרה", "Taper from the back, in front of the shop mirror"),

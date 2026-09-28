@@ -1,61 +1,63 @@
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { Scissors } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { whatsappHref } from "@/lib/business";
 import { WhatsAppIcon } from "./BrandIcons";
-import { Reveal, SectionHeading, staggerChild, staggerParent, useMotionReduced } from "./primitives";
+import { Reveal, staggerChild, staggerParent, useMotionReduced } from "./primitives";
 
-/** Editorial "menu board" list — numbered rows instead of generic icon cards. */
+/** Heading row, a full-width rule, then a grid of service cells separated by hairlines. */
 const Services = () => {
   const { t } = useLang();
   const reduce = useMotionReduced();
 
   return (
-    <section id="services" aria-labelledby="services-title" className="theme-dark grain relative py-24 sm:py-32">
+    <section id="services" aria-labelledby="services-title" className="theme-dark relative py-24 sm:py-32">
       <div className="container-editorial">
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:col-span-4 lg:self-start">
-            <SectionHeading id="services-title" title={t.services.title} intro={t.services.intro} />
-            <Reveal delay={0.18}>
-              <div className="mt-10 rounded-2xl border border-brass/30 bg-ink-soft p-6">
-                <p className="font-display text-xl font-bold">{t.services.note}</p>
-                <a
-                  href={whatsappHref(t.booking.photoMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-3 inline-flex items-center gap-2 font-semibold text-brass-light"
-                >
-                  <WhatsAppIcon className="h-5 w-5" />
-                  <span className="link-underline">{t.services.noteCta}</span>
-                  <span className="sr-only">{t.common.opensNewTab}</span>
-                  <ArrowLeft
-                    aria-hidden="true"
-                    className="h-4 w-4 transition-transform duration-200 ltr:rotate-180 group-hover:-translate-x-1 ltr:group-hover:translate-x-1"
-                  />
-                </a>
-              </div>
-            </Reveal>
-          </div>
-
-          <motion.ol
-            variants={staggerParent}
-            initial={reduce ? false : "hidden"}
-            whileInView="show"
-            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-            className="grid border-t border-bone/15 sm:grid-cols-2 sm:gap-x-10 lg:col-span-7 lg:col-start-6"
-          >
-            {t.services.items.map((s) => (
-              <motion.li
-                key={s.name}
-                variants={staggerChild}
-                className="flex items-center gap-4 border-b border-bone/15 py-6 sm:py-7"
-              >
-                <span aria-hidden="true" className="h-2 w-2 shrink-0 rotate-45 bg-brass" />
-                <h3 className="text-2xl font-bold sm:text-3xl">{s.name}</h3>
-              </motion.li>
-            ))}
-          </motion.ol>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <Reveal>
+            <h2 id="services-title" className="text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[1.05] tracking-tight">
+              {t.services.title}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <p className="text-lg text-stone">{t.services.intro}</p>
+          </Reveal>
         </div>
+
+        <motion.ul
+          variants={staggerParent}
+          initial={reduce ? false : "hidden"}
+          whileInView="show"
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          className="mt-12 grid gap-px border-y border-bone/15 bg-bone/15 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {t.services.items.map((s, i) => (
+            <motion.li key={s.name} variants={staggerChild} className="bg-ink px-2 py-10 sm:px-8">
+              <Scissors aria-hidden="true" className="h-6 w-6 text-brass" strokeWidth={1.75} />
+              <span aria-hidden="true" className="mt-6 block text-sm font-semibold tabular-nums text-stone">
+                0{i + 1}
+              </span>
+              <h3 className="mt-3 text-2xl font-bold sm:text-[1.75rem]">{s.name}</h3>
+              <p className="mt-3 leading-relaxed text-stone">{s.text}</p>
+            </motion.li>
+          ))}
+        </motion.ul>
+
+        <Reveal delay={0.1}>
+          <p className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-lg">
+            <span className="font-semibold">{t.services.note}</span>
+            <a
+              href={whatsappHref(t.booking.photoMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-semibold text-brass-light"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              <span className="link-underline">{t.services.noteCta}</span>
+              <span className="sr-only">{t.common.opensNewTab}</span>
+            </a>
+          </p>
+        </Reveal>
       </div>
     </section>
   );

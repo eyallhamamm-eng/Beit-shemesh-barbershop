@@ -1,8 +1,6 @@
-import About from "@/components/site/About";
 import Booking from "@/components/site/Booking";
 import Gallery from "@/components/site/Gallery";
 import Hero from "@/components/site/Hero";
-import Marquee from "@/components/site/Marquee";
 import Reviews from "@/components/site/Reviews";
 import Services from "@/components/site/Services";
 import SiteLayout, { usePageMeta } from "@/components/site/SiteLayout";
@@ -16,10 +14,8 @@ const Index = () => {
   return (
     <SiteLayout>
       <Hero />
-      <Marquee />
-      <About />
-      <Services />
       <Gallery />
+      <Services />
       <Reviews />
       <Visit />
       <Booking />

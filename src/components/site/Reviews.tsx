@@ -13,7 +13,7 @@ const Reviews = () => {
     <section id="reviews" aria-labelledby="reviews-title" className="theme-dark grain relative overflow-hidden py-24 sm:py-32">
       <div className="container-editorial">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading id="reviews-title" eyebrow={t.reviews.eyebrow} title={t.reviews.title} />
+          <SectionHeading id="reviews-title" title={t.reviews.title} />
           <Reveal delay={0.1}>
             <div className="flex items-center gap-6 rounded-2xl border border-brass/30 bg-ink-soft px-7 py-5">
               <span className="font-display text-7xl font-bold leading-none text-brass" aria-hidden="true">

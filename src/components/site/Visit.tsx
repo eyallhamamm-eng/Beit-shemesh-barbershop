@@ -11,7 +11,7 @@ const Visit = () => {
   return (
     <section id="visit" aria-labelledby="visit-title" className="theme-light py-24 sm:py-32">
       <div className="container-editorial">
-        <SectionHeading id="visit-title" tone="light" eyebrow={t.visit.eyebrow} title={t.visit.title} intro={t.visit.intro} />
+        <SectionHeading id="visit-title" tone="light" title={t.visit.title} />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">

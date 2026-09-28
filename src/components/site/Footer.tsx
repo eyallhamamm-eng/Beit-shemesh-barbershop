@@ -18,7 +18,6 @@ const Footer = () => {
       <div className="container-editorial grid gap-12 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Logo />
-          <p className="mt-5 max-w-xs leading-relaxed text-stone">{t.footer.tagline}</p>
           <Social compact className="mt-8" />
         </div>
 
@@ -74,7 +73,7 @@ const Footer = () => {
             {t.footer.linksTitle}
           </h2>
           <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2">
-            {(["about", "services", "gallery", "reviews", "visit", "contact"] as const).map((id) => (
+            {(["gallery", "services", "reviews", "visit", "contact"] as const).map((id) => (
               <li key={id}>
                 <a href={href(id)} className="link-underline text-bone/85 hover:text-bone">
                   {t.nav[id]}

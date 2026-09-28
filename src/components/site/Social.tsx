@@ -17,7 +17,6 @@ const Social = ({ className, compact = false }: { className?: string; compact?: 
   return (
     <div className={className}>
       <p className={cn("font-display font-bold", compact ? "text-lg" : "text-2xl")}>{t.social.title}</p>
-      {!compact && <p className="mt-1 text-stone">{t.social.text}</p>}
       <ul className={cn("flex flex-wrap gap-3", compact ? "mt-3" : "mt-5")}>
         {items.map(({ key, url, label, aria, Icon }) => {
           const inner = (

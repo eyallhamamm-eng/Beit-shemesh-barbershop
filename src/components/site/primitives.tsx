@@ -214,18 +214,20 @@ export const SectionHeading = ({
   className,
 }: {
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   intro?: string;
   tone?: "dark" | "light";
   className?: string;
 }) => (
   <div className={cn("max-w-2xl", className)}>
-    <Reveal>
-      <p className={cn("eyebrow", tone === "dark" ? "text-brass" : "text-brass-deep")}>{eyebrow}</p>
-    </Reveal>
+    {eyebrow && (
+      <Reveal>
+        <p className={cn("eyebrow mb-5", tone === "dark" ? "text-brass" : "text-brass-deep")}>{eyebrow}</p>
+      </Reveal>
+    )}
     <Reveal delay={0.06}>
-      <h2 id={id} className="mt-5 text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[1.05] tracking-tight">
+      <h2 id={id} className="text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[1.05] tracking-tight">
         {title}
       </h2>
     </Reveal>

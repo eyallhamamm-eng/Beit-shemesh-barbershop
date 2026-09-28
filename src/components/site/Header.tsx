@@ -10,7 +10,7 @@ import { WhatsAppIcon } from "./BrandIcons";
 import LanguageToggle from "./LanguageToggle";
 import { EASE_OUT, Logo, useMotionReduced } from "./primitives";
 
-const SECTIONS = ["about", "services", "gallery", "reviews", "visit"] as const;
+const SECTIONS = ["gallery", "services", "reviews", "visit"] as const;
 
 const Header = () => {
   const { t, dir } = useLang();
@@ -84,9 +84,6 @@ const Header = () => {
                         onClick={() => setOpen(false)}
                         className="flex items-baseline gap-4 border-b border-bone/10 py-4 font-display text-3xl font-bold text-bone transition-colors hover:text-brass-light"
                       >
-                        <span aria-hidden="true" className="font-body text-xs font-semibold tabular-nums text-brass">
-                          0{i + 1}
-                        </span>
                         {t.nav[id as keyof typeof t.nav]}
                       </a>
                     </motion.li>

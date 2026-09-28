@@ -13,8 +13,7 @@ const Hero = () => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const yImage = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 90]);
-  const yCard = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -60]);
-  const yNumeral = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
+    const yNumeral = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
 
   const item = (i: number) =>
     reduce
@@ -46,11 +45,8 @@ const Hero = () => {
 
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
-          <motion.p {...item(0)} className="eyebrow text-brass">
-            {t.hero.eyebrow}
-          </motion.p>
 
-          <h1 id="hero-title" className="mt-7 font-display">
+          <h1 id="hero-title" className="font-display">
             <motion.span {...item(1)} className="block text-lg font-medium tracking-wide text-stone sm:text-xl">
               {t.hero.titleLead}
             </motion.span>
@@ -158,26 +154,11 @@ const Hero = () => {
           >
             <span className="barber-stripes absolute inset-0" />
           </motion.div>
-
-          {/* Floating review card. */}
-          <motion.figure
-            style={{ y: yCard }}
-            initial={reduce ? false : { opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.9 }}
-            className="absolute -bottom-8 -start-4 max-w-[15rem] rounded-2xl border border-bone/10 bg-ink-soft/95 p-5 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur sm:-start-10"
-          >
-            <Stars className="text-brass" />
-            <blockquote className="mt-3 font-display text-xl font-bold leading-snug text-bone">
-              {lang === "he" ? `״${t.hero.quote}״` : `“${t.hero.quote}”`}
-            </blockquote>
-            <figcaption className="mt-2 text-sm text-stone">{t.hero.quoteBy}</figcaption>
-          </motion.figure>
         </div>
       </div>
 
       <motion.a
-        href="#about"
+        href="#gallery"
         initial={reduce ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}

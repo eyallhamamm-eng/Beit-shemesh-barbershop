@@ -12,7 +12,7 @@ const Gallery = () => {
   return (
     <section id="gallery" aria-labelledby="gallery-title" className="theme-light bg-paper py-24 sm:py-32">
       <div className="container-editorial">
-        <SectionHeading id="gallery-title" tone="light" eyebrow={t.gallery.eyebrow} title={t.gallery.title} intro={t.gallery.intro} />
+        <SectionHeading id="gallery-title" tone="light" title={t.gallery.title} />
 
         <ul className="mt-14 columns-2 [column-gap:1rem] md:columns-3 md:[column-gap:1.25rem] lg:columns-4 lg:[column-gap:1.5rem]">
           {GALLERY.map((img, i) => (

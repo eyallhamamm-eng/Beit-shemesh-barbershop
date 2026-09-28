@@ -15,7 +15,7 @@ const Services = () => {
       <div className="container-editorial">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:col-span-4 lg:self-start">
-            <SectionHeading id="services-title" eyebrow={t.services.eyebrow} title={t.services.title} intro={t.services.intro} />
+            <SectionHeading id="services-title" title={t.services.title} intro={t.services.intro} />
             <Reveal delay={0.18}>
               <div className="mt-10 rounded-2xl border border-brass/30 bg-ink-soft p-6">
                 <p className="font-display text-xl font-bold">{t.services.note}</p>
@@ -42,25 +42,16 @@ const Services = () => {
             initial={reduce ? false : "hidden"}
             whileInView="show"
             viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-            className="border-t border-bone/15 lg:col-span-7 lg:col-start-6"
+            className="grid border-t border-bone/15 sm:grid-cols-2 sm:gap-x-10 lg:col-span-7 lg:col-start-6"
           >
-            {t.services.items.map((s, i) => (
+            {t.services.items.map((s) => (
               <motion.li
                 key={s.name}
                 variants={staggerChild}
-                className="group relative grid grid-cols-[3rem_1fr] gap-x-5 border-b border-bone/15 py-8 sm:grid-cols-[4.5rem_1fr] sm:py-10"
+                className="flex items-center gap-4 border-b border-bone/15 py-6 sm:py-7"
               >
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-y-0 start-0 w-0 bg-gradient-to-l from-transparent to-brass/[0.07] transition-[width] duration-500 ease-out group-hover:w-full rtl:bg-gradient-to-r"
-                />
-                <span aria-hidden="true" className="relative font-display text-4xl font-bold italic text-brass sm:text-5xl">
-                  0{i + 1}
-                </span>
-                <div className="relative">
-                  <h3 className="text-[1.75rem] font-bold leading-tight sm:text-4xl">{s.name}</h3>
-                  <p className="mt-3 max-w-lg text-lg leading-relaxed text-stone">{s.text}</p>
-                </div>
+                <span aria-hidden="true" className="h-2 w-2 shrink-0 rotate-45 bg-brass" />
+                <h3 className="text-2xl font-bold sm:text-3xl">{s.name}</h3>
               </motion.li>
             ))}
           </motion.ol>

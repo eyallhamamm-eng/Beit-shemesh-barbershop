@@ -57,7 +57,7 @@ const Booking = () => {
       />
       <div className="container-editorial relative grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <SectionHeading id="contact-title" eyebrow={b.eyebrow} title={b.title} intro={b.intro} />
+          <SectionHeading id="contact-title" title={b.title} />
 
           <Reveal delay={0.16}>
             <div className="mt-10 space-y-4">

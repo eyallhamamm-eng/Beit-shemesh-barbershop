@@ -42,7 +42,7 @@ const Visit = () => {
                       <td className="py-3 text-end tabular-nums text-umber">
                         {h ? (
                           <span dir="ltr">
-                            {formatTime(h.open, lang)}–{formatTime(h.close, lang)}
+                            {formatTime(h.open, lang)}-{formatTime(h.close, lang)}
                           </span>
                         ) : (
                           t.visit.closed

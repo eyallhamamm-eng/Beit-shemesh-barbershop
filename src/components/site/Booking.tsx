@@ -26,7 +26,6 @@ const Booking = () => {
     service: `${uid}-service`,
     date: `${uid}-date`,
     dateError: `${uid}-date-error`,
-    time: `${uid}-time`,
     notes: `${uid}-notes`,
     privacy: `${uid}-privacy`,
   };
@@ -41,7 +40,6 @@ const Booking = () => {
     const data = new FormData(e.currentTarget);
     const name = String(data.get("name") ?? "").trim();
     const date = String(data.get("date") ?? "");
-    const time = String(data.get("time") ?? "");
     const day = date ? new Date(`${date}T12:00:00`).getDay() : -1;
     const dErr = !date ? "required" : day === 6 ? "saturday" : "";
     setError(!name);
@@ -55,7 +53,7 @@ const Booking = () => {
       return;
     }
     const [y, m, d] = date.split("-");
-    const when = `${t.visit.days[day]} ${d}/${m}/${y}${time ? `, ${time}` : ""}`;
+    const when = `${t.visit.days[day]} ${d}/${m}/${y}`;
     const notes = String(data.get("notes") ?? "").trim();
     const lines = [
       b.messageIntro,
@@ -145,7 +143,7 @@ const Booking = () => {
                 )}
               </div>
 
-              <div className="sm:col-span-2">
+              <div>
                 <label htmlFor={ids.service} className="text-[0.95rem] font-semibold">
                   {b.service}
                 </label>
@@ -180,21 +178,6 @@ const Booking = () => {
                     {dateError === "saturday" ? b.saturdayError : b.dateError}
                   </p>
                 )}
-              </div>
-
-              <div>
-                <label htmlFor={ids.time} className="text-[0.95rem] font-semibold">
-                  {b.time}
-                </label>
-                <input
-                  id={ids.time}
-                  name="time"
-                  type="time"
-                  min="08:00"
-                  max="21:00"
-                  step={900}
-                  className={cn(fieldClass, "[color-scheme:dark]")}
-                />
               </div>
 
               <div className="sm:col-span-2">

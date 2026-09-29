@@ -56,7 +56,7 @@ export const staggerChild: Variants = {
 /** Brand mark: a miniature barber pole beside a two-line wordmark. */
 export const Logo = ({ className, tone = "light" }: { className?: string; tone?: "light" | "dark" }) => {
   const { t, lang } = useLang();
-  const [line1, line2] = lang === "he" ? ["מספרות גברים", "בית שמש"] : ["Men's Barbershop", "Beit Shemesh"];
+  const [line1, line2] = lang === "he" ? ["מספרת גברים", "בית שמש"] : ["Men's Barbershop", "Beit Shemesh"];
   return (
     <span className={cn("inline-flex items-center gap-3", className)}>
       <span aria-hidden="true" className="relative h-10 w-3 overflow-hidden rounded-full ring-1 ring-brass/70">

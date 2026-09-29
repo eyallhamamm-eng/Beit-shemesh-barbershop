@@ -2,7 +2,7 @@ import type { Lang } from "@/i18n/translations";
 
 /** Single source of truth for the business's public details (NAP, hours, links). */
 export const BUSINESS = {
-  name: { he: "מספרות גברים בית שמש", en: "Beit Shemesh Men's Barbershop" },
+  name: { he: "מספרת גברים בית שמש", en: "Beit Shemesh Men's Barbershop" },
   barber: { he: "איציק", en: "Itzik" },
   phoneDisplay: "050-688-5166",
   phoneTel: "+972506885166",
@@ -33,7 +33,7 @@ export const wazeHref = (lang: Lang) =>
   `https://waze.com/ul?q=${encodeURIComponent(BUSINESS.address[lang])}&navigate=yes`;
 
 export const googleReviewsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  "מספרות גברים בית שמש הרצל 3",
+  "מספרת גברים בית שמש הרצל 3",
 )}`;
 
 export const mapEmbedSrc = (lang: Lang) =>

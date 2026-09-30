@@ -102,14 +102,25 @@ export const OpenStatus = ({ className, plain = false }: { className?: string; p
     text = `${t.status.closedOpens} ${when} ${t.status.at}${lang === "he" ? "" : " "}${formatTime(status.opensAt, lang)}`;
   }
 
-  if (plain) return <span className={className}>{text}</span>;
+  const dot = (
+    <span
+      aria-hidden="true"
+      className={cn("inline-flex h-2 w-2 shrink-0 rounded-full", status.state === "open" ? "bg-emerald-400" : "bg-red-500")}
+    />
+  );
+
+  if (plain) {
+    return (
+      <span className={cn("inline-flex items-center gap-2", className)}>
+        {dot}
+        {text}
+      </span>
+    );
+  }
 
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <span
-        aria-hidden="true"
-        className={cn("inline-flex h-2.5 w-2.5 rounded-full", status.state === "open" ? "bg-emerald-400" : "bg-stone")}
-      />
+      {dot}
       <Clock aria-hidden="true" className="h-4 w-4 opacity-80" />
       {text}
     </span>

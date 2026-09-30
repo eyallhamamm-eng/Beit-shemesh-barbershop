@@ -51,7 +51,7 @@ const Gallery = () => {
               {col.map((img, i) => (
                 <li key={img.src ?? i}>
                   <Reveal delay={c * 0.06} y={20}>
-                    <figure className="overflow-hidden rounded-xl shadow-[0_18px_40px_-22px_rgba(21,18,15,0.55)] ring-1 ring-ink/5">
+                    <figure className="overflow-hidden rounded-md ring-1 ring-ink/5">
                       <ImageSlot
                         src={img.src}
                         alt={img.alt[lang]}

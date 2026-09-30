@@ -63,7 +63,7 @@ const AccessibilityStatement = () => {
               </section>
             ))}
 
-            <section aria-labelledby="a11y-contact" className="rounded-3xl bg-ink p-8 text-bone [--focus:var(--brass-light)] sm:p-10">
+            <section aria-labelledby="a11y-contact" className="rounded-lg bg-ink p-8 text-bone [--focus:var(--brass-light)] sm:p-10">
               <h2 id="a11y-contact" className="text-3xl font-bold">
                 {p.contactTitle}
               </h2>

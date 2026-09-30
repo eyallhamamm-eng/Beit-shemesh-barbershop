@@ -1,11 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { MapPin, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { useRef } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import { BUSINESS, directionsHref, telHref, whatsappHref } from "@/lib/business";
 import { HERO_IMAGE } from "@/content/images";
 import { WhatsAppIcon } from "./BrandIcons";
-import { EASE_OUT, ImageSlot, OpenStatus, Stars, useMotionReduced } from "./primitives";
+import { EASE_OUT, ImageSlot, OpenStatus, useMotionReduced } from "./primitives";
 
 const Hero = () => {
   const { t, lang } = useLang();
@@ -29,44 +29,43 @@ const Hero = () => {
       aria-labelledby="hero-title"
       className="theme-dark relative isolate overflow-hidden pb-20 pt-[calc(var(--header-h)+2.5rem)] lg:min-h-[100svh] lg:pb-28 lg:pt-[calc(var(--header-h)+4rem)]"
     >
-      {/* Warm lamp glow behind the photo. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 end-[-10%] -z-10 h-[46rem] w-[46rem] rounded-full bg-[radial-gradient(closest-side,hsl(var(--brass)/0.22),transparent)]"
-      />
 
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
 
           <h1 id="hero-title" className="font-display">
-            <motion.span {...item(1)} className="block text-lg font-medium tracking-wide text-stone sm:text-xl">
+            <motion.span {...item(1)} className="block text-base font-normal text-stone sm:text-lg">
               {t.hero.titleLead}
             </motion.span>
             <motion.span
               {...item(2)}
-              className="mt-3 block text-[clamp(2.8rem,7vw,5.5rem)] font-bold leading-[1] tracking-tight"
+              className="mt-3 block text-[clamp(2.4rem,5.5vw,4.25rem)] font-medium leading-[1.05]"
             >
               {t.hero.titleLine1}
             </motion.span>
           </h1>
 
-          <motion.p {...item(4)} className="mt-8 max-w-xl text-lg leading-relaxed text-stone sm:text-xl">
+          <motion.p {...item(4)} className="mt-6 max-w-xl text-lg leading-relaxed text-stone">
             {t.hero.lead}
           </motion.p>
 
-          <motion.div {...item(5)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <motion.div {...item(5)} className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
             <a
               href={whatsappHref(t.booking.defaultMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-brass px-7 text-[1.05rem]"
+              className="btn-brass px-6"
             >
               <WhatsAppIcon className="h-5 w-5" />
               {t.common.bookWhatsapp}
               <span className="sr-only">{t.common.opensNewTab}</span>
             </a>
-            <a href={telHref} aria-label={t.common.callAria} className="btn-ghost-dark px-7 text-[1.05rem]">
-              <Phone aria-hidden="true" className="h-5 w-5" />
+            <a
+              href={telHref}
+              aria-label={t.common.callAria}
+              className="link-underline inline-flex items-center gap-2 py-2 font-semibold text-bone"
+            >
+              <Phone aria-hidden="true" className="h-4 w-4" />
               {t.common.call}
               <span dir="ltr" className="tabular-nums">
                 {BUSINESS.phoneDisplay}
@@ -74,52 +73,39 @@ const Hero = () => {
             </a>
           </motion.div>
 
-          <motion.ul
+          <motion.p
             {...item(6)}
-            className="mt-10 flex flex-col gap-4 border-t border-bone/10 pt-6 text-[0.95rem] text-bone/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8"
+            className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-bone/10 pt-5 text-sm text-stone"
           >
-            <li className="flex items-center gap-2.5">
-              <span className="font-display text-2xl font-bold text-bone">{BUSINESS.googleRating}</span>
-              <Stars className="text-brass" />
+            <span>
               <span className="sr-only">{t.common.ratingAria}</span>
-              <span aria-hidden="true" className="text-stone">
-                {t.common.googleRating}
+              <span aria-hidden="true">
+                {BUSINESS.googleRating} {t.common.googleRating}
               </span>
-            </li>
-            <li>
-              <OpenStatus />
-            </li>
-            <li>
-              <a
-                href={directionsHref(lang)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${t.visit.addressAria} ${t.common.opensNewTab}`}
-                className="link-underline inline-flex items-center gap-2"
-              >
-                <MapPin aria-hidden="true" className="h-4 w-4 text-brass" />
-                {BUSINESS.address[lang]}
-              </a>
-            </li>
-          </motion.ul>
+            </span>
+            <span aria-hidden="true">·</span>
+            <OpenStatus plain />
+            <span aria-hidden="true">·</span>
+            <a
+              href={directionsHref(lang)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${t.visit.addressAria} ${t.common.opensNewTab}`}
+              className="link-underline hover:text-bone"
+            >
+              {BUSINESS.address[lang]}
+            </a>
+          </motion.p>
         </div>
 
-        {/* Visual: arched photo frame with layered depth. */}
-        <div className="relative mx-auto w-full max-w-[26rem] lg:col-span-5 lg:max-w-[24rem]">
-          <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rtl:-translate-x-4">
-            <motion.div
-              initial={reduce ? false : { opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: EASE_OUT, delay: 0.3 }}
-              className="h-full w-full rounded-t-full border border-brass/40"
-            />
-          </div>
+        {/* Photo in a plain frame. */}
+        <div className="relative mx-auto w-full max-w-[28rem] lg:col-span-5 lg:max-w-[27rem]">
           <motion.div
             style={{ y: yImage }}
-            initial={reduce ? false : { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0 round 999px 999px 0 0)" }}
-            animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0 round 999px 999px 0 0)" }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, ease: EASE_OUT, delay: 0.25 }}
-            className="relative overflow-hidden rounded-t-full shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)] ring-1 ring-bone/10"
+            className="relative overflow-hidden rounded-md ring-1 ring-bone/10"
           >
             <ImageSlot
               src={HERO_IMAGE.src}

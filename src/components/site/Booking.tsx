@@ -14,7 +14,7 @@ const todayISO = () => {
 };
 
 const fieldClass =
-  "mt-2 block min-h-12 w-full rounded-xl border border-bone/20 bg-ink px-4 py-3 text-base text-bone placeholder:text-stone/80 transition-colors hover:border-bone/40 focus:border-brass focus-visible:outline-offset-2";
+  "mt-2 block min-h-12 w-full rounded-md border border-bone/20 bg-ink px-4 py-3 text-base text-bone placeholder:text-stone/80 transition-colors hover:border-bone/40 focus:border-brass focus-visible:outline-offset-2";
 
 const Booking = () => {
   const { t } = useLang();
@@ -112,7 +112,7 @@ const Booking = () => {
             onSubmit={onSubmit}
             aria-labelledby={`${uid}-form-title`}
             aria-describedby={ids.privacy}
-            className="rounded-3xl border border-bone/10 bg-ink-soft p-6 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:p-10"
+            className="rounded-lg border border-bone/10 bg-ink-soft p-6 sm:p-10"
           >
             <h3 id={`${uid}-form-title`} className="text-2xl font-bold sm:text-3xl">
               {b.formTitle}

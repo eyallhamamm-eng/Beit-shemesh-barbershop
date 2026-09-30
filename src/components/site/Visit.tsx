@@ -15,7 +15,7 @@ const Visit = () => {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <div className="h-full rounded-3xl bg-paper p-7 shadow-[0_30px_60px_-40px_rgba(21,18,15,0.5)] ring-1 ring-ink/10 sm:p-9">
+            <div className="h-full rounded-lg bg-paper p-7 ring-1 ring-ink/10 sm:p-9">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <h3 className="text-2xl font-bold">{t.visit.hoursTitle}</h3>
                 <OpenStatus className="rounded-full bg-ink px-3 py-1.5 text-sm font-medium text-bone" />
@@ -56,7 +56,7 @@ const Visit = () => {
           </Reveal>
 
           <Reveal className="lg:col-span-7" delay={0.08}>
-            <div className="flex h-full flex-col overflow-hidden rounded-3xl bg-ink text-bone shadow-[0_30px_60px_-30px_rgba(21,18,15,0.7)]">
+            <div className="flex h-full flex-col overflow-hidden rounded-lg bg-ink text-bone">
               <div className="p-7 sm:p-9">
                 <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-brass">{t.visit.addressTitle}</h3>
                 <a

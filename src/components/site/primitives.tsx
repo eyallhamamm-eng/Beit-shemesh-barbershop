@@ -84,7 +84,7 @@ export const useOpenStatus = () => {
   return status;
 };
 
-export const OpenStatus = ({ className }: { className?: string }) => {
+export const OpenStatus = ({ className, plain = false }: { className?: string; plain?: boolean }) => {
   const { t, lang } = useLang();
   const status = useOpenStatus();
   const today = israelNow().day;
@@ -102,16 +102,14 @@ export const OpenStatus = ({ className }: { className?: string }) => {
     text = `${t.status.closedOpens} ${when} ${t.status.at}${lang === "he" ? "" : " "}${formatTime(status.opensAt, lang)}`;
   }
 
+  if (plain) return <span className={className}>{text}</span>;
+
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <span aria-hidden="true" className="relative flex h-2.5 w-2.5">
-        <span
-          className={cn(
-            "relative inline-flex h-2.5 w-2.5 rounded-full",
-            status.state === "open" ? "bg-emerald-400" : "bg-stone",
-          )}
-        />
-      </span>
+      <span
+        aria-hidden="true"
+        className={cn("inline-flex h-2.5 w-2.5 rounded-full", status.state === "open" ? "bg-emerald-400" : "bg-stone")}
+      />
       <Clock aria-hidden="true" className="h-4 w-4 opacity-80" />
       {text}
     </span>

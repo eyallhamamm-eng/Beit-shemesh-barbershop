@@ -15,7 +15,7 @@ const Reviews = () => {
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading id="reviews-title" title={t.reviews.title} />
           <Reveal delay={0.1}>
-            <div className="flex items-center gap-6 rounded-2xl border border-brass/30 bg-ink-soft px-7 py-5">
+            <div className="flex items-center gap-6 rounded-lg border border-brass/30 bg-ink-soft px-7 py-5">
               <span className="font-display text-7xl font-bold leading-none text-brass" aria-hidden="true">
                 {BUSINESS.googleRating}
               </span>
@@ -52,7 +52,7 @@ const Reviews = () => {
               key={r.author}
               variants={staggerChild}
               className={cn(
-                "relative flex flex-col rounded-2xl border border-bone/10 bg-ink-soft p-7 shadow-[0_30px_60px_-35px_rgba(0,0,0,0.9)] transition-colors duration-300 hover:border-brass/40 sm:p-9",
+                "relative flex flex-col rounded-lg border border-bone/10 bg-ink-soft p-7 transition-colors duration-300 hover:border-brass/40 sm:p-9",
                 i === 0 ? "md:col-span-2 lg:col-span-6 lg:row-span-2" : "lg:col-span-6",
               )}
             >

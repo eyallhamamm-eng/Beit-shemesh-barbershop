@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { useRef } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import { BUSINESS, directionsHref, telHref, whatsappHref } from "@/lib/business";
@@ -13,7 +13,6 @@ const Hero = () => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const yImage = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 90]);
-    const yNumeral = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
 
   const item = (i: number) =>
     reduce
@@ -28,20 +27,13 @@ const Hero = () => {
     <section
       ref={ref}
       aria-labelledby="hero-title"
-      className="theme-dark grain relative isolate overflow-hidden pb-20 pt-[calc(var(--header-h)+2.5rem)] lg:min-h-[100svh] lg:pb-28 lg:pt-[calc(var(--header-h)+4rem)]"
+      className="theme-dark relative isolate overflow-hidden pb-20 pt-[calc(var(--header-h)+2.5rem)] lg:min-h-[100svh] lg:pb-28 lg:pt-[calc(var(--header-h)+4rem)]"
     >
-      {/* Atmosphere: warm lamp glow + a giant "3" for Herzl 3. */}
+      {/* Warm lamp glow behind the photo. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 end-[-10%] -z-10 h-[46rem] w-[46rem] rounded-full bg-[radial-gradient(closest-side,hsl(var(--brass)/0.22),transparent)]"
       />
-      <motion.span
-        aria-hidden="true"
-        style={{ y: yNumeral }}
-        className="pointer-events-none absolute -bottom-24 start-[-4%] -z-10 select-none font-display text-[26rem] font-black leading-none text-transparent [-webkit-text-stroke:1px_hsl(var(--brass)/0.18)] sm:text-[34rem]"
-      >
-        3
-      </motion.span>
 
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
@@ -150,17 +142,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      <motion.a
-        href="#gallery"
-        initial={reduce ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-6 start-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-stone hover:text-bone rtl:translate-x-1/2 lg:flex"
-      >
-        {t.hero.scroll}
-        <ArrowDown aria-hidden="true" className="h-4 w-4 motion-safe:animate-bounce" />
-      </motion.a>
     </section>
   );
 };

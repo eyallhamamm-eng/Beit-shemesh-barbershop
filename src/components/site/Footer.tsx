@@ -95,9 +95,6 @@ const Footer = () => {
         <p>
           © {year} {BUSINESS.name[lang]}. {t.footer.rights}
         </p>
-        <Link to="/accessibility" className="underline underline-offset-4 hover:text-bone">
-          {t.footer.a11y}
-        </Link>
       </div>
     </footer>
   );

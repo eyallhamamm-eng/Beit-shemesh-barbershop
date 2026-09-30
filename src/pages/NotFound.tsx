@@ -9,7 +9,7 @@ const NotFound = () => {
 
   return (
     <SiteLayout>
-      <section className="theme-dark grain relative flex min-h-[80vh] items-center pt-[var(--header-h)]">
+      <section className="theme-dark relative flex min-h-[80vh] items-center pt-[var(--header-h)]">
         <div className="container-editorial py-24">
           <p aria-hidden="true" className="font-display text-[8rem] font-black leading-none text-brass/80">
             404

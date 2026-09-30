@@ -10,7 +10,7 @@ const Reviews = () => {
   const reduce = useMotionReduced();
 
   return (
-    <section id="reviews" aria-labelledby="reviews-title" className="theme-dark grain relative overflow-hidden py-24 sm:py-32">
+    <section id="reviews" aria-labelledby="reviews-title" className="theme-dark relative overflow-hidden py-24 sm:py-32">
       <div className="container-editorial">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading id="reviews-title" title={t.reviews.title} />

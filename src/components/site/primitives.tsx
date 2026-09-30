@@ -18,8 +18,6 @@ export const useMotionReduced = () => {
 /** Scroll-triggered reveal. Motion is dropped automatically under reduced-motion. */
 export const Reveal = ({
   children,
-  delay = 0,
-  y = 28,
   className,
   as = "div",
 }: {
@@ -29,29 +27,13 @@ export const Reveal = ({
   className?: string;
   as?: "div" | "li" | "article" | "figure";
 }) => {
-  const reduce = useMotionReduced();
-  const Comp = motion[as];
-  return (
-    <Comp
-      className={className}
-      initial={reduce ? false : { opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 0.8, ease: EASE_OUT, delay }}
-    >
-      {children}
-    </Comp>
-  );
+  const Comp = as;
+  return <Comp className={className}>{children}</Comp>;
 };
 
-export const staggerParent: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-export const staggerChild: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE_OUT } },
-};
+// Lists render static; these variants are kept as no-ops so callers stay unchanged.
+export const staggerParent: Variants = { hidden: {}, show: {} };
+export const staggerChild: Variants = { hidden: {}, show: {} };
 
 /** Brand mark: a miniature barber pole beside a two-line wordmark. */
 export const Logo = ({ className, tone = "light" }: { className?: string; tone?: "light" | "dark" }) => {
@@ -123,9 +105,6 @@ export const OpenStatus = ({ className }: { className?: string }) => {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
       <span aria-hidden="true" className="relative flex h-2.5 w-2.5">
-        {status.state === "open" && (
-          <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 motion-safe:animate-ping" />
-        )}
         <span
           className={cn(
             "relative inline-flex h-2.5 w-2.5 rounded-full",
@@ -182,7 +161,7 @@ export const ImageSlot = ({
       aria-label={alt}
       style={{ aspectRatio: `${width} / ${height}` }}
       className={cn(
-        "grain relative flex w-full flex-col items-center justify-center gap-3 overflow-hidden",
+        "relative flex w-full flex-col items-center justify-center gap-3 overflow-hidden",
         tone === "dark"
           ? "bg-[radial-gradient(120%_90%_at_30%_20%,hsl(var(--ink-line)),hsl(var(--ink-soft))_55%,hsl(var(--ink)))] text-stone"
           : "bg-[radial-gradient(120%_90%_at_30%_20%,hsl(var(--paper)),hsl(38_28%_86%))] text-umber",

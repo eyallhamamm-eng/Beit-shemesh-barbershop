@@ -58,7 +58,7 @@ const Header = () => {
             <Dialog.Content
               dir={dir}
               aria-describedby={undefined}
-              className="theme-dark grain fixed inset-y-0 left-0 z-[90] flex w-[min(24rem,88vw)] flex-col overflow-y-auto border-e border-brass/20 bg-ink p-6 shadow-2xl data-[state=closed]:animate-out data-[state=open]:animate-in data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left data-[state=closed]:duration-200 data-[state=open]:duration-300"
+              className="theme-dark fixed inset-y-0 left-0 z-[90] flex w-[min(24rem,88vw)] flex-col overflow-y-auto border-e border-brass/20 bg-ink p-6 shadow-2xl data-[state=closed]:animate-out data-[state=open]:animate-in data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left data-[state=closed]:duration-200 data-[state=open]:duration-300"
             >
               <div className="relative z-10 flex items-center justify-between">
                 <Dialog.Title className="sr-only">{t.nav.menuTitle}</Dialog.Title>

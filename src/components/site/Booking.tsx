@@ -68,7 +68,7 @@ const Booking = () => {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="theme-dark grain relative overflow-hidden py-24 sm:py-32">
+    <section id="contact" aria-labelledby="contact-title" className="theme-dark relative overflow-hidden py-24 sm:py-32">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-40 start-[-10%] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(closest-side,hsl(var(--brass)/0.16),transparent)]"
